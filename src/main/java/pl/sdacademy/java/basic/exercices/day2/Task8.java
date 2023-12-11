@@ -1,6 +1,8 @@
 package pl.sdacademy.java.basic.exercices.day2;
 
 public class Task8 {
+    public static void main(String[] args) {
+
 
 //    private static final int VALUE_UPPER_A_IN_ASCII = 65;
 //    private static final int VALUE_UPPER_Z_IN_ASCII = 90;
@@ -42,7 +44,8 @@ public class Task8 {
 //            }
 //            //return result;
 //            return result.toString();
-//        }
+//       }
 //        return input;
     }
 }
+
