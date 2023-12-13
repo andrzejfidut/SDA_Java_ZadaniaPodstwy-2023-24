@@ -1,56 +1,60 @@
 package pl.sdacademy.java.basic.exercices.day2;
-import java.util.Arrays;
+import java.util.Scanner;
 public class Task13 {
-    public static void main(String[] args) {
-        int[] inputs = new int[3];
-        inputs[0] = 12;
-        inputs[1] = 7;
-        inputs[2] = 19;
+//    Napisz program, który dla podanej tablicy int'ów wyświetli najpierw najmniejszą, największą
+//    liczbę z tablicy a następnie sumę wszystkich elementów.
+//    Przykład:
+//    Input: 12 7 19
+//    Min value: 7
+//    Max value: 19
+//    Total sum: 38
+public static void main(String[] args) {
 
-        int[] inputs2 = {12, 7, 19, 3};
-        int minValue = getMinValue(inputs2);
-        System.out.println("minValue: " + minValue);
-        int maxValue = getMaxValue(inputs2);
-        System.out.println("maxValue: " + maxValue);
-        int sum = sum(inputs2);
-        System.out.println("sum: " + sum);
+    Scanner scanner = new Scanner(System.in);
 
-        System.out.println(Arrays.toString(inputs2));
+    System.out.print("Enter the number of elements in the array: ");
+    int sizeTab = scanner.nextInt();
+
+    int[] array = new int[sizeTab];
+    System.out.println("Enter the elements of the array:");
+    for (int i = 0; i < sizeTab; i++) {
+        array[i] = scanner.nextInt();
     }
 
-    private static int getMinValue(int[] ints) {
-        int currentMinValue = ints[0];
-/*        for(int i = 1; i < ints.length; i++) {
-            if(ints[i] < currentMinValue) {
-                currentMinValue = ints[i];
-            }
-        }*/
-        for(int element : ints) {
-            if(element < currentMinValue) {
-                currentMinValue = element;
-            }
-        }
-        return currentMinValue;
-    }
+    int minValue = findMinValue(array);
+    int maxValue = findMaxValue(array);
+    int totalSum = calculateTotalSum(array);
 
-    private static int getMaxValue(int[] ints) {
-        int currentMaxValue = ints[0];
-        for(int element : ints) {
-            if(element > currentMaxValue) {
-                currentMaxValue = element;
+    System.out.println("Min value: " + minValue);
+    System.out.println("Max value: " + maxValue);
+    System.out.println("Total sum: " + totalSum);
+}
+
+    private static int findMinValue(int[] array) {   //najmniejsza
+        int min = array[0];
+        for (int value : array) {
+            if (value < min) {
+                min = value;
             }
         }
-        return currentMaxValue;
+        return min;
     }
 
-    private static int sum(int[] ints) {
-        //return Arrays.stream(ints).sum();
-        //return Arrays.stream(ints).min().getAsInt();
+    private static int findMaxValue(int[] array) {   // najwieksza
+        int max = array[0];
+        for (int value : array) {
+            if (value > max) {
+                max = value;
+            }
+        }
+        return max;
+    }
+
+    private static int calculateTotalSum(int[] array) {
         int sum = 0;
-        for(int element : ints) {
-            sum += element;
+        for (int value : array) {
+            sum += value;
         }
         return sum;
-
     }
 }

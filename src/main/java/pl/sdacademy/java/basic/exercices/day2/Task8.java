@@ -1,51 +1,35 @@
 package pl.sdacademy.java.basic.exercices.day2;
-
+import java.util.Scanner;
 public class Task8 {
+//    Napisz program, który przyjmie jako argument tekst (typu String), a następnie zamieni małe
+//    litery na duże i odwrotnie, w podanym łańcuchu wejściowym.
+//    Przykład:
+//    Input: AlaKot
+//    Result: aLAkOT
+
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
 
-//    private static final int VALUE_UPPER_A_IN_ASCII = 65;
-//    private static final int VALUE_UPPER_Z_IN_ASCII = 90;
-//    private static final int VALUE_LOWER_A_IN_ASCII = 97;
-//    private static final int VALUE_LOWER_Z_IN_ASCII = 122;
-//    public static final int DIFF_UPPER_AND_LOWER = 32;
-//
-//    public static void main(String[] args) {
-//        String input = "Ala MA kota!";
-//        String result = replaceCharacters(input);
-//        System.out.println(result);
-////        System.out.println(input);
-////        input = input.toLowerCase();
-////        System.out.println(input);
-//
-////        StringBuilder sb = new StringBuilder("ala ma kota");
-////        sb.append(" i psa");
-////        System.out.println(sb);
-//
-//    }
-//
-//    private static String replaceCharacters(String input) {
-//        // Ala MA kota!
-//        //String result = "";
-//        StringBuilder result = new StringBuilder();
-//        if(StringValidator.isValid(input)) {
-//            for(int i = 0; i < input.length(); i++) {
-//                char currentChar = input.charAt(i);
-//                if(currentChar >= VALUE_UPPER_A_IN_ASCII && currentChar <= VALUE_UPPER_Z_IN_ASCII) {
-//                    //result += String.valueOf((char) (currentChar + DIFF_UPPER_AND_LOWER));
-//                    result.append((char)(currentChar + DIFF_UPPER_AND_LOWER));
-//                } else if(currentChar >= VALUE_LOWER_A_IN_ASCII && currentChar <= VALUE_LOWER_Z_IN_ASCII) {
-//                    //result += String.valueOf((char) (currentChar - DIFF_UPPER_AND_LOWER));
-//                    result.append((char)(currentChar - DIFF_UPPER_AND_LOWER));
-//                } else { //inne niz litery -> nie zmieniamy
-//                    //result += currentChar;
-//                    result.append(currentChar);
-//                }
-//            }
-//            //return result;
-//            return result.toString();
-//       }
-//        return input;
+        System.out.print("Please insert your text: ");
+        String userInput = scanner.nextLine();
+
+        String result = reverseCase(userInput);
+
+        System.out.println("Result: " + result);
+    }
+    private static String reverseCase(String text) {
+        StringBuilder result = new StringBuilder();
+
+        for (char c : text.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                result.append(Character.toLowerCase(c));
+            } else if (Character.isLowerCase(c)) {
+                result.append(Character.toUpperCase(c));
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
     }
 }
-

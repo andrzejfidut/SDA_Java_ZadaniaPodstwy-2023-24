@@ -1,46 +1,61 @@
 package pl.sdacademy.java.basic.exercices.day2;
-import java.util.Arrays;
+import java.util.Scanner;
 public class Task14 {
+//    Napisz program, który dla zadanej tablicy int'ów policzy ile jest w niej liczb ujemnych. Jeśli takie
+//    występują utworzy nową tablicę, do której przepisze tylko te ujemne liczby.
+//    Przykład:
+//    Input: 12,
+//            -7, 19,
+//            -5
+//    Result: -7,
+//            -5
+public static void main(String[] args) {
 
+    Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-            int[] numbers = {12, -7, 19, -5};
-            int lengthOfResultArray = countNegativeNumbers(numbers);
-            if(lengthOfResultArray > 0) {
-                int[] result = createArrayWithNegativeNumbers(numbers, lengthOfResultArray);
-                System.out.println(Arrays.toString(result));
-            }
-        }
+    System.out.print("Enter the number of elements in the array: ");
+    int n = scanner.nextInt();
 
-        private static int countNegativeNumbers(int[] numbers) {
-            int counter = 0;
-            for(int i : numbers) {
-                if(i < 0) {
-                    counter++;
-                }
-            }
-            return counter;
-        }
-
-        private static int[] createArrayWithNegativeNumbers(int[] numbers, int size){
-            int[] result = new int[size];
-/*        int i = 0;
-        for(int element : numbers) {
-            if(element < 0) {
-                // wpisz wartośc do tablicy result
-                result[i] = element;
-                i++;
-            }
-        */
-            for (int i = 0, j = 0; i < numbers.length; i++) {
-                if (numbers[i] < 0) {
-                    result[j] = numbers[i];
-                    j++;
-                }
-            }
-            return result;
-
-        }
-
+    int[] originalArray = new int[n];
+    System.out.println("Enter the elements of the array:");
+    for (int i = 0; i < n; i++) {
+        originalArray[i] = scanner.nextInt();
     }
 
+    System.out.println("Original Array:");
+    printArray(originalArray);
+
+    int[] negativeNumbersArray = getNegativeNumbersArray(originalArray);
+
+    System.out.println("Result:");
+    printArray(negativeNumbersArray);
+}
+    private static int[] getNegativeNumbersArray(int[] originalArray) {
+        int negativeCount = countNegativeNumbers(originalArray);
+        int[] negativeNumbersArray = new int[negativeCount];
+
+        int index = 0;
+        for (int value : originalArray) {
+            if (value < 0) {
+                negativeNumbersArray[index++] = value;
+            }
+        }
+
+        return negativeNumbersArray;
+    }
+    private static int countNegativeNumbers(int[] array) {
+        int count = 0;
+        for (int value : array) {
+            if (value < 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+    private static void printArray(int[] array) {
+        for (int value : array) {
+            System.out.print(value + ", ");
+        }
+        System.out.println();
+    }
+}

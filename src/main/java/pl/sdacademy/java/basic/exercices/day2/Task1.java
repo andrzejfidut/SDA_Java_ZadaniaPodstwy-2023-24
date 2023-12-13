@@ -1,44 +1,26 @@
 package pl.sdacademy.java.basic.exercices.day2;
 
 public class Task1 {
-        public static final char DEFAULT_CHAR = '\u0000';
+//    Napisz program, który przyjmie jako parametr tekst (typu String), a następnie zwróci jego
+//    ostatni znak.
+//    Przykład:
+//    Original word: ala
+//    Last Char: a
+//    Original word: domek
+//    Last Char: k
+public static void main(String[] args) {
 
-//        public static void main(String[] args) {
-//            String input = "ala";
-//            char result = getLastCharacter(input);
-//            System.out.println(result); //a
-//
-//            input = "domek";
-//            result = getLastCharacter(input);
-//            System.out.println(result); //k
-//
-//            input = "";
-//            result = getLastCharacter(input);
-//            System.out.println(result);
-//
-//            input = "      ";
-//            result = getLastCharacter(input);
-//            System.out.println(result);
-//
-//            input = null;
-//            result = getLastCharacter(input);
-//            System.out.println(result);
-//        }
-//
-//        private static char getLastCharacter(String input) {
-//        /*
-//        input.equals("STOP") -> potencjalny NPE
-//        "STOP".equals(input) -> jesteśmy bezpieczni
-//        */
-//            if (StringValidator.isValid(input)){
-//                int lastPosition = input.length() - 1;
-//                //return input.substring(lastPosition);
-//                return input.charAt(lastPosition);
-//            }
-//            return DEFAULT_CHAR;
+    System.out.println("Original word: ala");
+    System.out.println("Last Char: " + getLastChar("ala"));
 
-//
-//        }
+    System.out.println("Original word: domek");
+    System.out.println("Last Char: " + getLastChar("domek"));
 }
-
-
+    private static char getLastChar(String text) {
+        if (text != null && !text.isEmpty()) {
+            return text.charAt(text.length() - 1);
+        } else {
+            return 0;
+        }
+}
+}
